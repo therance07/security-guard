@@ -6,7 +6,11 @@ import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
+  metadataBase: new URL(
+    process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_SITE_URL?.replace(/^﻿/, '') ?? 'http://localhost:3000'
+  ),
   title: 'SECURITY GUARD | Votre Sécurité, Notre Priorité !',
   description: 'SECURITY GUARD, filiale du Groupe Yannick, offre des solutions de sécurité professionnelles à Brazzaville, Congo : gardiennage, maîtres-chiens, sécurité événementielle, rondes, escorte et protection rapprochée.',
   keywords: 'sécurité privée, gardiennage, Brazzaville, Congo, SECURITY GUARD, Groupe Yannick, agents de sécurité, protection rapprochée',
